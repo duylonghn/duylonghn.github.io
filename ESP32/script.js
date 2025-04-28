@@ -8,8 +8,8 @@ const loadingMessage = document.getElementById('loadingMessage');
 // Hàm tải danh sách firmware từ manifestMap.json
 async function loadManifests() {
   try {
-    const response = await fetch('/UploadFirmwareESP32/manifestMap.json');
-    console.log("Đang tải manifest từ: /UploadFirmwareESP32/manifestMap.json");
+    const response = await fetch('manifestMap.json');
+    console.log("Đang tải manifest từ: manifestMap.json");
 
     if (!response.ok) throw new Error('Không thể tải file manifest');
 

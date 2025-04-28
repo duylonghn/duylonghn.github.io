@@ -2,11 +2,11 @@
   "wroom32": [
     {
       "label": "Thiết bị cầm tay",
-      "path": "/manifest/Handheld_Device.json"
+      "path": "/ESP32/manifest/Handheld_Device.json"
     },
     {
       "label": "Test",
-      "path": "/UploadFirmwareESP32/manifest/test.json"
+      "path": "/ESP32/manifest/test.json"
     }
   ]
 }
