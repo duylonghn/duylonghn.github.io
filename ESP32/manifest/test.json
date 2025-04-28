@@ -1,0 +1,15 @@
+{
+    "name": "ESP32 WROOM-32 - Test",
+    "version": "1.0.0",
+    "builds": [
+      {
+        "chipFamily": "ESP32",
+        "parts": [
+          { "path": "/UploadFirmwareESP32/firmware/test/Test_MFRC.ino.bootloader.bin", "offset": 0 },
+          { "path": "/UploadFirmwareESP32/firmware/test/Test_MFRC.ino.partitions.bin", "offset": 32768 },
+          { "path": "/UploadFirmwareESP32/firmware/test/Test_MFRC.ino.bin", "offset": 65536 }
+        ]
+      }
+    ]
+  }
+  
