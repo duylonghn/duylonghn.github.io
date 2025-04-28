@@ -1,0 +1,55 @@
+{
+    "en": [
+      {
+        "role": "Student",
+        "company": "University of Transport and Communications",
+        "time": "2021 - 2026",
+        "description": "Completed the academic program\nMajor in Electronics and Telecommunications Engineering\nEngineer in Information and Communications Technology."
+      },
+      {
+        "role": "Intern",
+        "company": "Vietnam Posts and Telecommunications Group - VNPT",
+        "time": "05/2024 - 08/2024",
+        "description": "- Improved knowledge about networking including: network protocols and types of cyber attacks.\n- Studied basic CCNA knowledge, built labs using Cisco Packet Tracer and EVE for basic network systems.\n- Learned about tools used in system deployment: Docker, K8S, MinIO, Jenkins, Ansible, Kafka.\n- Installed monitoring tools: Grafana, Prometheus, cAdvisor, Node-exporter.\n- Studied and practiced simulations of common web attack methods."
+      },
+      {
+        "role": "Customer Service",
+        "company": "Tien Phong Commercial Joint Stock Bank",
+        "time": "06/2023 - 09/2023",
+        "description": "- Handled customer service hotline.\n- Supported and answered customer inquiries regarding banking services.\n- Trained in banking-specific customer service operations.\n- Participated in training new customer service staff."
+      },
+      {
+        "role": "Customer Service",
+        "company": "Monkey Vietnam",
+        "time": "07/2022 - 04/2024",
+        "description": "- Responded to messages and comments about the company’s products on social media fanpages.\n- Consulted customers via the fanpage.\n- Handled customer complaints on the page.\n- Provided customer support via hotline.\n- Participated in company projects on customer experience and training new customer service staff."
+      }
+    ],
+    "vi": [
+      {
+        "role": "Sinh viên",
+        "company": "Trường Đại học Giao thông Vận tải",
+        "time": "2021 - 2026",
+        "description": "Hoàn thành chương trình học\nNgành Kỹ thuật điện tử viễn thông\nKỹ sư Kỹ thuật Thông Tin và Truyền Thông."
+      },
+      {
+        "role": "Thực tập sinh",
+        "company": "Tập đoàn Bưu chính Viễn thông Việt Nam - VNPT",
+        "time": "05/2024 - 08/2024",
+        "description": "- Nâng cao kiến thức về mạng bao gồm: Giao thức mạng, các kiểu tấn công mạng.\n- Học kiến thức cơ bản về CCNA, xây dựng lab trên Cisco Packet Tracer, EVE các hệ thống mạng cơ bản.\n- Tìm hiểu các công cụ hỗ trợ trong triển khai hệ thống: Docker, K8S, MinIO, Jenkin, Ansible, Kafka.\n- Cài đặt công cụ monitoring: Grafana, Prometheus, cAdvisor, Node-exporter.\n- Tìm hiểu, thực hành mô phỏng về các phương pháp tấn công web."
+    },
+      {
+        "role": "Chăm sóc khách hàng",
+        "company": "Ngân hàng TMCP Tiên Phong",
+        "time": "06/2023 - 09/2023",
+        "description": "- Trực tổng đài chăm sóc khách hàng.\n- Hỗ trợ, giải đáp các thắc mắc của khách hàng khi sử dụng dịch vụ tại ngân hàng.\n- Được đào tạo nghiệp vụ CSKH cho lĩnh vực ngân hàng.\n- Tham gia đào tạo nghiệp vụ cho các nhân viên mới"
+      },
+      {
+        "role": "Chăm sóc khách hàng",
+        "company": "Monkey Việt Nam",
+        "time": "07/2022 - 04/2024",
+        "description": "- Trả lời tin nhắn, bình luận của khách hàng online về sản phẩm trên các fanpage của công ty.\n- Tư vấn khách hàng trên page.\n- Giải quyết các khiếu nại của khách hàng trên page.\n- Gọi điện tổng đài hỗ trợ khách hàng.\n- Tham gia các dự án riêng của công ty về trải nghiệm khách hàng và đào tạo nghiệp vụ cho các nhân viên mới"
+      }
+    ]
+  }
+  

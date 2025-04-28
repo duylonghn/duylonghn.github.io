@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Chặn truy cập trực tiếp nếu không đến từ DaoDuyLong.html
+RewriteCond %{HTTP_REFERER} !DaoDuyLong\.html [NC]
+RewriteRule \.pdf$ - [F,L]
+</IfModule>
