@@ -1,0 +1,11 @@
+{
+  "devices": [
+    {
+      "id": "wroom32",
+      "name": "ESP32 WROOM-32",
+      "firmwares": [
+        { "name": "Firmware 1.0.0", "url": "http://duylong.io.vn/ESP32/firmwares/wroom32/MRFC/MRFC.bin" }
+      ]
+    }
+  ]
+}
