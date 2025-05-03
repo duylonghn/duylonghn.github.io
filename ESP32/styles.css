@@ -18,7 +18,14 @@ h1 {
   color: #2555AA;
   margin-bottom: 0px;
 }
-
+select {
+  display: block;
+  margin: 10px auto;
+  width: 50%;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+}
 label {
   display: block;
   width: 50%;
