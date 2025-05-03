@@ -224,7 +224,35 @@ h2 {
         margin: 10px;
         transform: scale(0.8);
     }
+
+    .wrapper {
+        display: grid;
+        gap: 5px;
+    }
+
+    .myproject {
+        width: 500px;
+        margin-top: 10%;
+    }
+    .myproject h1 {
+        margin-bottom: 0px;
+    }
+    .box-project {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+        padding: 15px;
+    }
+
+    .box-project a {
+        background-color: #e2e2e2;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
     .container {
+        width: 400px;
         margin-top: 40px;
         padding-top: 20px;
         grid-template-columns: 45% 55%;
