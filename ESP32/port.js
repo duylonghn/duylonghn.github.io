@@ -1,58 +1,44 @@
-// Lấy các phần tử DOM
-const boardSelect = document.getElementById('boardSelect');
-const firmwareTableBody = document.getElementById('firmwareTable').getElementsByTagName('tbody')[0];
-const installButton = document.getElementById('installButton');
-const successMessage = document.getElementById('successMessage');
-const loadingMessage = document.getElementById('loadingMessage');
+document.addEventListener('DOMContentLoaded', () => {
+  const firmwareTableBody = document.querySelector('#firmwareTable tbody');
+  const successMessage = document.getElementById('successMessage');
 
-let manifestData = null;
+  // Fetch danh sách firmware từ firmware-list.json
+  fetch('firmware.json')
+    .then(res => res.json())
+    .then(data => {
+      if (Array.isArray(data)) {
+        data.forEach(item => {
+          const row = document.createElement('tr');
 
-// Tải manifest từ server
-fetch('/ESP32/manifest.json')
-  .then(response => response.json())
-  .then(data => {
-    manifestData = data;
-    populateBoardSelect(data.devices);
-  })
-  .catch(err => {
-    console.error("Lỗi khi tải manifest:", err);
-    alert("❌ Không thể tải danh sách thiết bị.");
-  });
+          const nameCell = document.createElement('td');
+          nameCell.textContent = item.name;
 
-// Hiển thị các loại bo mạch trong <select>
-function populateBoardSelect(devices) {
-  boardSelect.innerHTML = '<option value="">-- Chọn thiết bị --</option>';
-  devices.forEach(device => {
-    const option = document.createElement('option');
-    option.value = device.id;
-    option.textContent = device.name;
-    boardSelect.appendChild(option);
-  });
-}
+          const noteCell = document.createElement('td');
+          noteCell.textContent = item.note || '';  // Lấy ghi chú từ firmware-list.json
 
-// Khi người dùng chọn thiết bị
-boardSelect.addEventListener('change', function () {
-  const selectedId = this.value;
-  firmwareTableBody.innerHTML = '';
-  installButton.removeAttribute('manifest');
+          const buttonCell = document.createElement('td');
+          const installBtn = document.createElement('esp-web-install-button');
+          installBtn.setAttribute('manifest', item.manifest);
+          installBtn.addEventListener('installation-success', () => {
+            successMessage.style.display = 'block';
+            setTimeout(() => {
+              window.scrollTo({ top: successMessage.offsetTop, behavior: 'smooth' });
+            }, 500);
+          });
 
-  const device = manifestData.devices.find(d => d.id === selectedId);
-  if (device) {
-    device.firmwares.forEach(fw => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${fw.name}</td>
-        <td><input type="radio" name="firmware" value="${fw.url}"></td>
-      `;
-      firmwareTableBody.appendChild(row);
+          buttonCell.appendChild(installBtn);
+
+          row.appendChild(nameCell);
+          row.appendChild(noteCell);  // Hiển thị ghi chú trong cột Thông tin
+          row.appendChild(buttonCell);
+
+          firmwareTableBody.appendChild(row);
+        });
+      } else {
+        console.error('Dữ liệu firmware.json không hợp lệ.');
+      }
+    })
+    .catch(err => {
+      console.error('Không thể tải firmware-list.json:', err);
     });
-
-    // Gắn sự kiện khi chọn radio
-    document.querySelectorAll('input[name="firmware"]').forEach(input => {
-      input.addEventListener('change', function () {
-        installButton.setAttribute('manifest', this.value);
-        console.log("Đã gán manifest cho install button:", this.value);
-      });
-    });
-  }
 });

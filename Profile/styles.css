@@ -33,6 +33,7 @@ body {
 
 .myproject h1 {
     text-align: center;
+    font-size: 25px;
 }
 
 .name-project a {
@@ -120,7 +121,6 @@ body {
     text-align: center;
     line-height: 30px;
 } 
-
 h2 {
     padding:0;
     margin: 0 0 20px 0;
@@ -130,18 +130,20 @@ h2 {
     border-left: 1px solid #000;
     text-align: justify;
 }
-.experience {
-    text-align: right;
-}
-.des {
+.experience.des {
     text-align: justify;
+}
+.skills {
+    margin-top:  50px;
+}
+.experience {
+    text-align: justify;
+    border-left: 1px solid #000;
+    padding-left: 30px;
 }
 .experience h4 {
     margin:10px 0 5px;
     font-size: 18px;
-}
-.skills {
-    margin-top:  50px;
 }
 .experience ul {
     padding: 0;
@@ -151,10 +153,24 @@ h2 {
 .experience li {
     padding: 10px 0;
 }
+.experience .item {
+    position: relative;
+}
+.experience .item::before {
+    position: absolute;
+    width:13px;
+    height: 13px;
+    background-color: #000;
+    content: '';
+    border-radius: 50%;
+    left: -37px;
+    top: 7px;
+}
 .project {
-    padding-left: 30px;
-    text-align: justify;
-    border-left: 1px solid #000;
+    text-align: right;
+}
+.project.des {
+    text-align: right;
 }
 .project h4 {
     margin:20px 0 10px;
@@ -164,21 +180,12 @@ h2 {
     color: #0c7373;
     padding:10px 0;
 }
+.project li {
+    text-align: justify;
+}
 .project .location {
     font-weight: 500;
     padding-bottom:10px;
-}
-.project .item {
-    position: relative;
-}
-.project .item::before {
-    position: absolute;
-    width:13px;
-    height: 13px;
-    background-color: #000;
-    content: '';
-    border-radius: 50%;
-    left: -37px;
 }
 
 .btn {

@@ -1,0 +1,8 @@
+[
+    {
+      "name": "Điểm danh RFID V1.0.0",
+      "note": "Thiết bị điểm danh bằng RFID, có hiển thị màn OLED và LCD. Gửi dữ liệu lên database cho hệ thống.",
+      "manifest": "/ESP32/firmwares/Wroom32/Student_Management/V1.0.0.json"
+    }
+]
+  

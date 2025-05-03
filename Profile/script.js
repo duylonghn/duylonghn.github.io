@@ -1,13 +1,12 @@
-let currentLang = 'vi'; // Ngôn ngữ mặc định
+let currentLang = 'vi';
 
 document.addEventListener('DOMContentLoaded', function () {
-    changeLanguage(currentLang); // Load toàn bộ nội dung ban đầu
+    changeLanguage(currentLang);
 });
 
 function changeLanguage(lang) {
     currentLang = lang;
 
-    // Hiển thị phần tử theo ngôn ngữ
     document.querySelectorAll('.vi, .en').forEach(el => {
         el.style.display = el.classList.contains(lang) ? '' : 'none';
     });
@@ -59,7 +58,6 @@ function renderProjects(projects, container) {
     let html = `<h2>${currentLang === 'vi' ? 'DỰ ÁN' : 'PROJECTS'}</h2>`;
 
     projects.forEach(project => {
-        html += `<div class="item">`;
         if (project.name) {
             html += `<h4>${project.name}</h4>`;
         }
@@ -108,9 +106,9 @@ function download() {
     link.click();
     document.body.removeChild(link);
 }
-document.addEventListener('contextmenu', function (e) {
+/*document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
-});
+});*/
 
 document.addEventListener('wheel', function (e) {
     if (e.ctrlKey) {

@@ -12,18 +12,13 @@
   <div class="container">
     <h1>Nạp firmware qua cổng USB cho ESP32</h1>
 
-    <label for="boardSelect">CHỌN THIẾT BỊ</label>
-    <select id="boardSelect">
-      <option value="">-- Chọn thiết bị --</option>
-    </select>
-
     <div id="firmwareList">
-      <!-- Danh sách firmware sẽ hiển thị ở dạng bảng -->
       <table id="firmwareTable">
         <thead>
           <tr>
             <th>Tên Firmware</th>
-            <th>Chọn</th>
+            <th>Thông tin</th>
+            <th>Nạp</th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +26,6 @@
         </tbody>
       </table>
     </div>
-
-    <esp-web-install-button id="installButton" class="installBtn" improv="false"></esp-web-install-button>
 
     <a class="link" href="ota.html">Đổi phương thức</a>
     <a class="link" href="/index.html">Trang chủ</a>
