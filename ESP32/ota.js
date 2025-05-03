@@ -6,7 +6,7 @@ const statusDiv = document.getElementById('status');
 let manifestData = null;
 
 // Tải manifest từ server
-fetch('/ESP32/manifest.json')
+fetch('manifest.json')
   .then(response => response.json())
   .then(data => {
     manifestData = data;
@@ -30,7 +30,7 @@ function populateBoardSelect(devices) {
 // Khi người dùng chọn thiết bị
 boardSelect.addEventListener('change', function () {
   const selectedId = this.value;
-  firmwareTableBody.innerHTML = '';  // Clear previous entries
+  firmwareTableBody.innerHTML = '';
 
   const device = manifestData.devices.find(d => d.id === selectedId);
   if (device) {

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bảng tra ErlangB</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <h2>Máy tính Erlang B (nhập 2 trên 3 yêu cầu)</h2>
+
+  <label for="channels">Số mạch (N):</label>
+  <input type="number" id="channels" placeholder="VD: 10">
+
+  <label for="erlang">Lưu lượng (A - Erlang):</label>
+  <input type="number" id="erlang" step="0.0001" placeholder="VD: 7.5">
+
+  <label for="gos">Tỷ số suy hao B (GOS - từ 0 đến 1):</label>
+  <input type="number" id="gos" step="0.0001" placeholder="VD: 0.01">
+
+  <button onclick="compute()">Tính toán</button>
+  <a class="link" href="/index.html">Trang chủ</a>
+
+  <div id="result"></div>
+</body>
+</html>

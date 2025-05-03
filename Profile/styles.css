@@ -15,6 +15,45 @@ body {
     background-color: #D5D5D5;
     font-family: system-ui;
 }
+
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 70px;
+}
+
+.myproject {
+    background-color: #ffffff;
+    box-shadow: 0 10px 50px #858585;
+    border-radius: 10px;
+    width: 20%;
+    height: auto;
+    margin-top: 4%;
+}
+
+.myproject h1 {
+    text-align: center;
+}
+
+.name-project a {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.name-project a:hover {
+    color: #000000;
+    background-color: #d7d7d7;
+}
+
+.name-project {
+    margin: 10px 0px 5px 20px;
+}
+
 .container {
     background-color: #ffffff;
     width: 1000px;

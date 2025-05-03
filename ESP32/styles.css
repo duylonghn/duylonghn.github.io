@@ -68,3 +68,10 @@ button:hover {
   text-align: center;
   border: 1px solid #ddd;
 }
+
+a {
+  display: block;
+  margin: 10px;
+  color: #2555AA;
+  text-decoration: none;
+}

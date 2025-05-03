@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 Tools</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="port.js" defer></script>
+  <script type="module" src="https://unpkg.com/esp-web-tools@10.0.0/dist/web/install-button.js?module"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Nạp firmware qua cổng USB cho ESP32</h1>
+
+    <label for="boardSelect">CHỌN THIẾT BỊ</label>
+    <select id="boardSelect">
+      <option value="">-- Chọn thiết bị --</option>
+    </select>
+
+    <div id="firmwareList">
+      <!-- Danh sách firmware sẽ hiển thị ở dạng bảng -->
+      <table id="firmwareTable">
+        <thead>
+          <tr>
+            <th>Tên Firmware</th>
+            <th>Chọn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Các dòng firmware sẽ được thêm động tại đây -->
+        </tbody>
+      </table>
+    </div>
+
+    <esp-web-install-button id="installButton" class="installBtn" improv="false"></esp-web-install-button>
+
+    <a class="link" href="ota.html">Đổi phương thức</a>
+    <a class="link" href="/index.html">Trang chủ</a>
+
+    <div class="message success" id="successMessage" style="display: none;">
+      <h3>🎉 Nạp firmware thành công!</h3>
+      <p>Thiết bị đã được nạp thành công.</p>
+    </div>
+
+    <div class="message loading" id="loadingMessage" style="display: none;">
+      <p>Đang nạp firmware, vui lòng chờ...</p>
+      <div class="spinner"></div>
+    </div>
+  </div>
+</body>
+</html>

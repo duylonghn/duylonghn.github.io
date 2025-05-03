@@ -4,7 +4,14 @@
       "id": "wroom32",
       "name": "ESP32 WROOM-32",
       "firmwares": [
-        { "name": "Firmware 1.0.0", "url": "http://duylong.io.vn/ESP32/firmwares/wroom32/MRFC/MRFC.bin" }
+        { "name": "MRFC 1.0.0", "url": "http://duylonghn.github.io/ESP32/firmwares/wroom32/MRFC/MRFC.bin" }
+      ]
+    },
+    {
+      "id": "esp32-c3",
+      "name": "ESP32 C3",
+      "firmwares": [
+        { "name": "MRFC 1.0.0", "url": "http://duylonghn.github.io/ESP32/firmwares/wroom32/MRFC/MRFC.bin" }
       ]
     }
   ]
