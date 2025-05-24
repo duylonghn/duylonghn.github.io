@@ -22,5 +22,13 @@
   <a class="link" href="/index.html">Trang chủ</a>
 
   <div id="result"></div>
+  <div id="sign" style="color: rgb(146, 146, 146);"></div>
+  <script>
+    fetch('/mysign.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('sign').innerHTML = html;
+    });
+  </script>
 </body>
 </html>

@@ -57,7 +57,7 @@
                 <div class="specializ en">Information and communication engineer</div>
                 <ul class="contact">
                     <li><span>P</span> +84 332058965</li>
-                    <li><span>E</span> duylongst2283@gmail.com</li>
+                    <li><span>E</span> duylong2283.work@gmail.com</li>
                     <li><span>W</span>
                         <a href="https://duylonghn.github.io/Profile/DaoDuyLong.html"
                         style="text-decoration: none; color: black;"
@@ -105,5 +105,13 @@
 
         </div>
     </div>
+    <div id="sign" style="color: rgb(146, 146, 146);"></div>
+    <script>
+        fetch('/mysign.html')
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById('sign').innerHTML = html;
+        });
+    </script>
 </body>
 </html>
