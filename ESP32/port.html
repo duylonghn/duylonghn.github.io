@@ -6,6 +6,7 @@
   <title>ESP32 Tools</title>
   <link rel="stylesheet" href="styles.css">
   <script src="port.js" defer></script>
+  <script src="/components/path.js"></script>
   <script type="module" src="https://unpkg.com/esp-web-tools@10.0.0/dist/web/install-button.js?module"></script>
 </head>
 <body>
@@ -31,7 +32,7 @@
       </table>
     </div>
 
-    <a class="link" href="/index.html">Trang chủ</a>
+    <a class="link" id="index">Trang chủ</a>
 
     <div class="message success" id="successMessage" style="display: none;">
       <h3>🎉 Nạp firmware thành công!</h3>
@@ -45,11 +46,12 @@
   </div>
   <div id="sign" style="color: rgb(146, 146, 146);"></div>
   <script>
-    fetch('/mysign.html')
+    fetch(PATHS.SIGN)
       .then(res => res.text())
       .then(html => {
         document.getElementById('sign').innerHTML = html;
     });
+    document.getElementById('index').href = PATHS.INDEX;
   </script>
 </body>
 </html>

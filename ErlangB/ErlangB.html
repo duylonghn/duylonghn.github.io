@@ -5,6 +5,7 @@
   <title>Bảng tra ErlangB</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <script src="/components/path.js"></script>
 </head>
 <body>
   <h2>Máy tính Erlang B (nhập 2 trên 3 yêu cầu)</h2>
@@ -19,16 +20,17 @@
   <input type="number" id="gos" step="0.0001" placeholder="VD: 0.01">
 
   <button onclick="compute()">Tính toán</button>
-  <a class="link" href="/index.html">Trang chủ</a>
+  <a class="link" id="index">Trang chủ</a>
 
   <div id="result"></div>
   <div id="sign" style="color: rgb(146, 146, 146);"></div>
   <script>
-    fetch('/mysign.html')
+    fetch(PATHS.SIGN)
       .then(res => res.text())
       .then(html => {
         document.getElementById('sign').innerHTML = html;
     });
+    document.getElementById('index').href = PATHS.INDEX;
   </script>
 </body>
 </html>

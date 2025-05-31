@@ -1,9 +1,23 @@
-const SHEET_ID = "1-3EDNYlLFvrCsqEaChY6J2R5Uux-jH0V4iOQfGwyTK4"; // Thay ID nếu cần
+const SHEET_ID = "1-3EDNYlLFvrCsqEaChY6J2R5Uux-jH0V4iOQfGwyTK4";
+
+function loadLoader() {
+  return fetch(PATHS.LOADER)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('loader').innerHTML = html;
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = PATHS.LOADER_JS;
+        script.onload = resolve;
+        document.body.appendChild(script);
+      });
+    });
+}
 
 // Hàm fetch dữ liệu từ Google Sheets
 function fetchSheet(sheetName, callback) {
   const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
-
+  showLoading();
   fetch(url)
     .then(res => res.text())
     .then(text => {
@@ -11,9 +25,12 @@ function fetchSheet(sheetName, callback) {
       const rows = json.table.rows.map(row =>
         row.c.map(cell => (cell ? cell.v : ""))
       );
-      callback(rows.slice(1)); // Bỏ dòng tiêu đề
+      callback(rows.slice(1));
     })
-    .catch(err => console.error("Lỗi khi tải sheet:", err));
+    .catch(err => console.error("Lỗi khi tải sheet:", err))
+    .finally(() => {
+      hideLoading();
+    });;
 }
 
 // Hiển thị bảng command với xử lý gộp ý nghĩa + danh sách
@@ -102,15 +119,22 @@ function addSearchFilter(inputId, tableId) {
 
 // Chạy khi trang được tải
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector("#command-table")) {
-    fetchSheet("Commands", renderCommands);
-    addSearchFilter("search-code", "command-table");
-  }
+  loadLoader()
+  .then(() => {
+    // Gọi các thao tác sau khi loader.js đã được tải xong
+    if (document.querySelector("#command-table")) {
+      fetchSheet("Commands", renderCommands);
+      addSearchFilter("search-code", "command-table");
+    }
 
-  if (document.querySelector("#template-table")) {
-    fetchSheet("Template", renderTemplates);
-    addSearchFilter("search-temp", "template-table");
-  }
+    if (document.querySelector("#template-table")) {
+      fetchSheet("Template", renderTemplates);
+      addSearchFilter("search-temp", "template-table");
+    }
+
+    setupSidebarSelection();
+  })
+  .catch(err => console.error("Lỗi khi tải loader:", err));
 });
 
 // Xử lý chọn mục trong sidebar

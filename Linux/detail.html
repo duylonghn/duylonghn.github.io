@@ -5,19 +5,22 @@
   <title>Chi tiết lệnh</title>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js"></script>
+  <script src="/components/path.js"></script>
 </head>
 <body>
+  <div id="loader"></div>
   <div class="main-content">
-    <a href="index.html">← Quay lại</a>
+    <a id="index-linux">← Quay lại</a>
     <div id="command-detail">Đang tải...</div>
   </div>
   <div id="sign" style="color: rgb(146, 146, 146);"></div>
   <script>
-    fetch('/mysign.html')
+    fetch(PATHS.SIGN)
       .then(res => res.text())
       .then(html => {
         document.getElementById('sign').innerHTML = html;
     });
+    document.getElementById('index-linux').href = PATHS.INDEX_LINUX;
   </script>
 </body>
 </html>

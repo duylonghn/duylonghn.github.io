@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CCNA Commands</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="/components/path.js"></script>
   <script src="script.js"></script>
+  
 </head>
 <body>
+  <div id="loader"></div>
   <div class="container">
     <aside class="sidebar">
       <h2>Tính năng</h2>
@@ -15,7 +18,7 @@
         <li>Mã lệnh</li>
       </ul>
       <ul id="template-category" class="category">
-        <li class="link-temp"><a href="template.html">Mẫu</a></li>
+        <li class="link-temp"><a id="temp">Mẫu</a></li>
       </ul>
     </aside>
     <main class="main-content">
@@ -38,15 +41,17 @@
         </table>
       </div>
     </main>
-    <a class="link" href="/index.html" style="height: 20px; margin: 10px; text-align: center;">Trang chủ</a>
+    <a class="link" id="index" style="height: 20px; margin: 10px; text-align: center;">Trang chủ</a>
   </div>
   <div id="sign" style="color: rgb(146, 146, 146);"></div>
   <script>
-    fetch('/mysign.html')
+    fetch(PATHS.SIGN)
       .then(res => res.text())
       .then(html => {
         document.getElementById('sign').innerHTML = html;
     });
+    document.getElementById('index').href = PATHS.INDEX;
+    document.getElementById('temp').href = PATHS.TEMPLATE_CCNA;
   </script>
 </body>
 </html>

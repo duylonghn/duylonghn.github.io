@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <script src="script.js" defer></script>
+    <script src="/components/path.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
+    <div id="loader"></div>
     <div class="btn">
         <div class="changeLanguage">
             <button onclick="changeLanguage('vi')">Vietnamese</button>
@@ -28,26 +30,26 @@
             <h1 class="en">My Tools</h1>
             <div class="box-project">
                 <div class="name-project">
-                    <a class="vi" href="/ErlangB/ErlangB.html">Bảng tra Erlang B</a>
-                    <a class="en" href="/ErlangB/ErlangB.html">Erlang B Lookup Table</a>
+                    <a class="vi" id="index-erlangb">Bảng tra Erlang B</a>
+                    <a class="en" id="index-erlangb">Erlang B Lookup Table</a>
                 </div>
                 <div class="name-project">
-                    <a class="vi" href="/ESP32/port.html">ESP32 Tools - PORT</a>
-                    <a class="en" href="/ESP32/port.html">ESP32 Tools - PORT</a>
+                    <a class="vi" id="index-esp32">ESP32 Tools - PORT</a>
+                    <a class="en" id="index-esp32">ESP32 Tools - PORT</a>
                 </div>
                 <div class="name-project">
-                    <a class="vi" href="/Linux/index.html">Lệnh Linux</a>
-                    <a class="en" href="/Linux/index.html">Linux commands</a>
+                    <a class="vi" id="index-linux">Lệnh Linux</a>
+                    <a class="en" id="index-linux">Linux commands</a>
                 </div>
                 <div class="name-project">
-                    <a class="vi" href="/CCNA/index.html">Lệnh CCNA</a>
-                    <a class="en" href="/CCNA/index.html">CCNA commands</a>
+                    <a class="vi" id="index-ccna">Lệnh CCNA</a>
+                    <a class="en" id="index-ccna">CCNA commands</a>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="avatar">
-                <img src="avartar.png" alt="Avatar">
+                <img id="avt" alt="Avatar">
             </div>
 
             <div class="name">
@@ -59,7 +61,7 @@
                     <li><span>P</span> +84 332058965</li>
                     <li><span>E</span> duylong2283.work@gmail.com</li>
                     <li><span>W</span>
-                        <a href="https://duylonghn.github.io/Profile/DaoDuyLong.html"
+                        <a id="profile"
                         style="text-decoration: none; color: black;"
                         onmouseover="this.style.color='blue'"
                         onmouseout="this.style.color='black'">
@@ -107,11 +109,17 @@
     </div>
     <div id="sign" style="color: rgb(146, 146, 146);"></div>
     <script>
-        fetch('/mysign.html')
+        fetch(PATHS.SIGN)
         .then(res => res.text())
         .then(html => {
             document.getElementById('sign').innerHTML = html;
         });
+        document.getElementById('index-erlangb').href = PATHS.INDEX_ERLANGB;
+        document.getElementById('index-esp32').href = PATHS.INDEX_ESP32;
+        document.getElementById('index-ccna').href = PATHS.INDEX_CCNA;
+        document.getElementById('index-linux').href = PATHS.INDEX_LINUX;
+        document.getElementById('profile').href = PATHS.PROFILE;
+        document.getElementById('avt').src = PATHS.AVT;
     </script>
 </body>
 </html>

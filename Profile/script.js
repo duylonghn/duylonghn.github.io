@@ -1,7 +1,23 @@
 let currentLang = 'vi';
 
-document.addEventListener('DOMContentLoaded', function () {
+function loadLoader() {
+  return fetch(PATHS.LOADER)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('loader').innerHTML = html;
+      return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = PATHS.LOADER_JS;
+        script.onload = resolve;
+        document.body.appendChild(script);
+      });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadLoader().then(() => {
     changeLanguage(currentLang);
+  });
 });
 
 function changeLanguage(lang) {
@@ -106,9 +122,9 @@ function download() {
     link.click();
     document.body.removeChild(link);
 }
-/*document.addEventListener('contextmenu', function (e) {
+document.addEventListener('contextmenu', function (e) {
     e.preventDefault();
-});*/
+});
 
 document.addEventListener('wheel', function (e) {
     if (e.ctrlKey) {

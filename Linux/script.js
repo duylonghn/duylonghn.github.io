@@ -90,53 +90,81 @@ function renderCommandDetail(cmd) {
   `;
 }
 
-
-// === Trang index.html ===
-if (window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/")) {
-  window.onload = async () => {
-    const res = await fetch("commands.json");
-    const allCommands = await res.json();
-
-    let currentCategory = "Tất cả";
-
-    renderCategories(allCommands, (selectedCat) => {
-      currentCategory = selectedCat;
+function loadLoader() {
+  return fetch(PATHS.LOADER)
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('loader').innerHTML = html;
+      return new Promise(resolve => {
+        const script = document.createElement('script');
+        script.src = PATHS.LOADER_JS;
+        script.onload = resolve;
+        document.body.appendChild(script);
+      });
     });
-
-    const search = document.getElementById('search');
-    const detail = document.getElementById('command-detail');
-
-    search.addEventListener('input', (e) => {
-      const keyword = e.target.value.toLowerCase().trim();
-
-      if (keyword === '') {
-        // Nếu không có từ khóa, hiển thị lại theo nhóm đã chọn
-        const filtered = currentCategory === "Tất cả"
-          ? allCommands
-          : allCommands.filter(cmd => cmd.category === currentCategory);
-        renderCommandList(filtered);
-        if (detail) detail.classList.add('hidden');
-        return;
-      }
-
-      // Nếu có từ khóa, lọc toàn bộ
-      const filtered = allCommands.filter(cmd =>
-        cmd.command.toLowerCase().includes(keyword)
-      );
-
-      renderCommandList(filtered);
-      if (detail) detail.classList.add('hidden');
-    });
-  };
 }
 
-// === Trang detail.html ===
-if (window.location.pathname.endsWith("detail.html")) {
-  window.onload = async () => {
-    const cmdName = getQueryParam("cmd");
-    const res = await fetch("commands.json");
-    const commands = await res.json();
-    const cmd = commands.find(c => c.command === cmdName);
-    renderCommandDetail(cmd);
-  };
-}
+document.addEventListener('DOMContentLoaded', () => {
+  loadLoader().then(() => {
+    // Trang index.html
+    if (window.location.pathname.endsWith("index.html") || window.location.pathname.endsWith("/")) {
+      showLoading();
+      fetch("commands.json")
+        .then(res => res.json())
+        .then(allCommands => {
+          let currentCategory = "All";
+
+          renderCategories(allCommands, (selectedCat) => {
+            currentCategory = selectedCat;
+          });
+
+          const search = document.getElementById('search');
+          const detail = document.getElementById('command-detail');
+
+          search.addEventListener('input', (e) => {
+            const keyword = e.target.value.toLowerCase().trim();
+
+            if (keyword === '') {
+              const filtered = currentCategory === "All"
+                ? allCommands
+                : allCommands.filter(cmd => cmd.category === currentCategory);
+              renderCommandList(filtered);
+              if (detail) detail.classList.add('hidden');
+              return;
+            }
+
+            const filtered = allCommands.filter(cmd =>
+              cmd.command.toLowerCase().includes(keyword)
+            );
+
+            renderCommandList(filtered);
+            if (detail) detail.classList.add('hidden');
+          });
+
+          hideLoading();
+        })
+        .catch(err => {
+          console.error('Lỗi khi tải commands.json:', err);
+          hideLoading();
+        });
+    }
+
+    // Trang detail.html
+    if (window.location.pathname.endsWith("detail.html")) {
+      showLoading();
+      const cmdName = getQueryParam("cmd");
+
+      fetch("commands.json")
+        .then(res => res.json())
+        .then(commands => {
+          const cmd = commands.find(c => c.command === cmdName);
+          renderCommandDetail(cmd);
+          hideLoading();
+        })
+        .catch(err => {
+          console.error('Lỗi khi tải dữ liệu chi tiết:', err);
+          hideLoading();
+        });
+    }
+  });
+});
