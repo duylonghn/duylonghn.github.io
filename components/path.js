@@ -1,5 +1,5 @@
 const PATHS = {
-  INDEX: '/Profile/index.html',
+  INDEX: '/Profile/DaoDuyLong.html',
   // Components
   SIGN: '/components/mysign.html',
   LOADER: '/components/loading.html',
