@@ -35,8 +35,16 @@ label {
   font-size: 23px;
   margin: 0px auto;
 }
-
+#deviceIP {
+  display: block;
+  margin: 10px auto;
+  width: 30%;
+  height: 30px;
+  text-align: center;
+  border-radius: 5px;
+}
 button {
+  border: none;
   background-color: #2555AA;
   color: white;
   border-radius: 10px;

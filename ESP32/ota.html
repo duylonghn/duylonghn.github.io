@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ESP32 Tools</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="port.js" defer></script>
+  <script src="ota.js" defer></script>
   <script src="/components/path.js"></script>
-  <script type="module" src="https://unpkg.com/esp-web-tools@10.0.0/dist/web/install-button.js?module"></script>
 </head>
 <body>
   <div class="container">
-    <h1>Nạp firmware qua cổng USB cho ESP32</h1>
+    <h1>Nạp firmware qua OTA cho ESP32</h1>
 
     <select id="boardSelect">
       <option value="">-- Chọn board --</option>
@@ -23,7 +22,7 @@
           <tr>
             <th>Tên Firmware</th>
             <th>Thông tin</th>
-            <th>Nạp</th>
+            <th>Chọn</th>
           </tr>
         </thead>
         <tbody>
@@ -31,9 +30,13 @@
         </tbody>
       </table>
     </div>
-
+    <div id="inputDeviceIP">
+      <label for="deviceIP">Nhập địa chỉ IP của thiết bị:</label>
+      <input type="text" id="deviceIP" placeholder="192.168.1.50">
+    </div>
+    <button id="upload">Upload</button>
     <a class="link" id="index">Trang chủ</a>
-    <a class="link" id="esp32-ota">Đổi phương thức</a>
+    <a class="link" id="esp32-port">Đổi phương thức</a>
 
     <div class="message success" id="successMessage" style="display: none;">
       <h3>🎉 Nạp firmware thành công!</h3>
@@ -53,7 +56,7 @@
         document.getElementById('sign').innerHTML = html;
     });
     document.getElementById('index').href = PATHS.INDEX;
-    document.getElementById('esp32-ota').href = PATHS.ESP32_OTA;
+    document.getElementById('esp32-port').href = PATHS.ESP32_PORT;
   </script>
 </body>
 </html>

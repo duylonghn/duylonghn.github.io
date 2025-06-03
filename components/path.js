@@ -10,7 +10,8 @@ const PATHS = {
 
   INDEX_LINUX: '/Linux/index.html',
   INDEX_ERLANGB: '/ErlangB/ErlangB.html',
-  INDEX_ESP32: '/ESP32/port.html',
+  ESP32_PORT: '/ESP32/port.html',
+  ESP32_OTA: '/ESP32/ota.html',
   // Profile
   AVT: '/Profile/avartar.png',
   PROFILE: 'https://duylonghn.github.io/Profile/DaoDuyLong.html'
