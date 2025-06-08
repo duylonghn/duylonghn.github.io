@@ -32,7 +32,7 @@ body {
   color: #2c3e50;
 }
 
-.category li.link-temp a {
+.category li.link-menu a {
   display: block;
   width: 100%;
   height: 100%;
@@ -82,7 +82,7 @@ input#search {
   font-size: 1rem;
 }
 
-#command-list, #template-list {
+#vocabulary {
   flex: 1;
   overflow-y: auto;
   max-height: 500px;
@@ -111,6 +111,42 @@ a {
     text-decoration: none;
 }
 
+.word-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.word-inputs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+input {
+   text-align: left;
+   width: 150px;
+   border: 1px dashed #ccc;
+	margin: 0px 10px 5px 10px;
+	padding: 5px;
+}
+
+.btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #136fac;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -130,12 +166,13 @@ a {
   color: #2c3e50;
   text-align: center;
 }
+
 @media (max-width: 480px) {
   .container {
     flex-direction: column;
   }
 
-  h2 {
+  h1 {
     display: none;
   }
 
@@ -172,10 +209,16 @@ a {
 
   .main-content {
     padding: 1rem;
+    margin-top: 30px;
   }
 
   #search-container {
+    margin-top: 30px;
     width: 90%;
+  }
+
+  #vocabulary {
+    max-height: none;
   }
 
   .link {

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn English</title>
+  <link rel="stylesheet" href="quiztest.css">
+  <script src="/components/path.js"></script>
+  <script src="quiztest.js"></script>
+  <script src="/LearnEnglish/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+	<div id="loader"></div>
+  	<div class="container">
+    	<aside class="sidebar">
+			<h1>Feature</h1>
+			<ul id="category-find" class="category">
+				<li class="link-menu"><a id="find">Search</a></li>
+			</ul>
+			<ul id="category-card" class="category">
+				<li class="link-menu"><a id="card">Flashcard</a></li>
+			</ul>
+			<ul id="category-add" class="category">
+				<li class="link-menu"><a id="add">Vocabulary</a></li>
+			</ul>
+			<ul id="category-quiz" class="category">
+				<li class="link-menu"><a id="quiz">Quiztest</a></li>
+			</ul>
+		</aside>
+		<main class="main-content">
+  			<h1>Quiz Test</h1>
+  			<div class="choose">
+    			<div class="topic">
+  					<div class="mini-topic">
+    					<strong>Topic:</strong>
+						<label><input type="checkbox" name="type"> Loading...</label><br>
+  					</div>
+  					<div class="mini-topic">
+    					<strong>Type:</strong>
+    					<label><input type="checkbox" name="type"> Loading...</label><br>
+  					</div>
+  					<div class="mini-topic">
+    					<strong>Random:</strong>
+    					<label><input type="checkbox" id="shuffle"> On</label>
+  					</div>
+					<div class="mini-topic">
+    					<strong>Quantity:</strong>
+    					<label><input type="number" id="quantity" min="1" step="1"></label>
+  					</div>
+				</div>
+				<button class="btn" id="start">Start</button>
+    		</div>
+			<div class="card-container hidden">
+      			<div class="card">
+					<div class="card-content">
+        				<div class="word" id="word">english</div>
+						<div class="ipa" id="ipa"></div>
+						<button class="speaker-btn" onclick="speak(event)" aria-label="Nghe">
+          					<i class="fas fa-volume-up"></i>
+        				</button>
+      				</div>
+					<div class="answer">
+						<input type="text" id="answer-input" placeholder="Vietnamese">
+						<button class="btn" id="check-answer">Check</button>
+					</div>
+				</div>
+				<div class="action">
+					<button class="btn" id="prev">Back</button>
+    				<button class="btn back" id="stop">Stop</button>
+    				<button class="btn" id="next">Next</button>
+  				</div>
+  			</div>
+		</main>
+		<a class="link" id="index" style="height: 20px; margin: 10px; text-align: center;">Trang chủ</a>
+	</div>
+	<div id="sign" style="color: rgb(146, 146, 146);"></div>
+	<script>
+		fetch(PATHS.SIGN)
+		.then(res => res.text())
+		.then(html => {
+			document.getElementById('sign').innerHTML = html;
+		});
+		document.getElementById('index').href = PATHS.INDEX;
+		document.getElementById('find').href = PATHS.LEARN_ENG;
+		document.getElementById('card').href = PATHS.FLASHCARD;
+		document.getElementById('add').href = PATHS.VOCABULARY;
+		document.getElementById('quiz').href = PATHS.QUIZTEST;
+	</script>
+</body>
+</html>

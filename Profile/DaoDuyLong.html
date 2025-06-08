@@ -30,20 +30,24 @@
             <h1 class="en">My Tools</h1>
             <div class="box-project">
                 <div class="name-project">
-                    <a class="vi" id="index-erlangb">Bảng tra Erlang B</a>
-                    <a class="en" id="index-erlangb">Erlang B Lookup Table</a>
+                    <a class="vi" id="erlangb">Bảng tra Erlang B</a>
+                    <a class="en" id="erlangb">Erlang B Lookup Table</a>
                 </div>
                 <div class="name-project">
-                    <a class="vi" id="index-esp32">ESP32 Tools - PORT</a>
-                    <a class="en" id="index-esp32">ESP32 Tools - PORT</a>
+                    <a class="vi" id="esp32">ESP32 Tools - PORT</a>
+                    <a class="en" id="esp32">ESP32 Tools - PORT</a>
                 </div>
                 <div class="name-project">
-                    <a class="vi" id="index-linux">Lệnh Linux</a>
-                    <a class="en" id="index-linux">Linux commands</a>
+                    <a class="vi" id="linux">Lệnh Linux</a>
+                    <a class="en" id="linux">Linux commands</a>
                 </div>
                 <div class="name-project">
-                    <a class="vi" id="index-ccna">Lệnh CCNA</a>
-                    <a class="en" id="index-ccna">CCNA commands</a>
+                    <a class="vi" id="ccna">Lệnh CCNA</a>
+                    <a class="en" id="ccna">CCNA commands</a>
+                </div>
+                <div class="name-project">
+                    <a class="vi" id="learn-eng">Flashcard</a>
+                    <a class="en" id="learn-eng">Flashcard</a>
                 </div>
             </div>
         </div>
@@ -106,17 +110,12 @@
             </div>
         </div>
     </div>
-    <div id="sign" style="color: rgb(146, 146, 146);"></div>
     <script>
-        fetch(PATHS.SIGN)
-        .then(res => res.text())
-        .then(html => {
-            document.getElementById('sign').innerHTML = html;
-        });
-        document.getElementById('index-erlangb').href = PATHS.INDEX_ERLANGB;
-        document.getElementById('index-esp32').href = PATHS.ESP32_PORT;
-        document.getElementById('index-ccna').href = PATHS.INDEX_CCNA;
-        document.getElementById('index-linux').href = PATHS.INDEX_LINUX;
+        document.getElementById('erlangb').href = PATHS.INDEX_ERLANGB;
+        document.getElementById('esp32').href = PATHS.ESP32;
+        document.getElementById('ccna').href = PATHS.INDEX_CCNA;
+        document.getElementById('linux').href = PATHS.INDEX_LINUX;
+        document.getElementById('learn-eng').href = PATHS.LEARN_ENG;
         document.getElementById('profile').href = PATHS.PROFILE;
         document.getElementById('avt').src = PATHS.AVT;
     </script>

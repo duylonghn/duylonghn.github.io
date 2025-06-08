@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn English</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="/components/path.js"></script>
+  <script src="script.js"></script>
+  <script src="search.js"></script>
+</head>
+<body>
+  <div id="loader"></div>
+  <div class="container">
+    <aside class="sidebar">
+      <h1>Feature</h1>
+      <ul id="category-find" class="category">
+        <li class="link-menu"><a id="find">Search</a></li>
+      </ul>
+      <ul id="category-card" class="category">
+        <li class="link-menu"><a id="card">Flashcard</a></li>
+      </ul>
+      <ul id="category-add" class="category">
+        <li class="link-menu"><a id="add">Vocabulary</a></li>
+      </ul>
+      <ul id="category-quiz" class="category">
+        <li class="link-menu"><a id="quiz">Quiztest</a></li>
+      </ul>
+    </aside>
+    <main class="main-content">
+      <h1>English dictionary</h1>
+      <div id="search-container">
+        <input type="text" id="search" class="search" placeholder="Word..." />
+      </div>
+      <div id="vocabulary">
+        <table id="vocab-table" class="table">
+          <thead>
+            <tr>
+              <th>Topic</th>
+              <th>Type</th>
+              <th>English</th>
+              <th>Vietnamese</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <a class="link" id="index" style="height: 20px; margin: 10px; text-align: center;">Home</a>
+  </div>
+  <div id="sign" style="color: rgb(146, 146, 146);"></div>
+  <script>
+    fetch(PATHS.SIGN)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('sign').innerHTML = html;
+    });
+    document.getElementById('index').href = PATHS.INDEX;
+    document.getElementById('find').href = PATHS.LEARN_ENG;
+    document.getElementById('card').href = PATHS.FLASHCARD;
+    document.getElementById('add').href = PATHS.VOCABULARY;
+    document.getElementById('quiz').href = PATHS.QUIZTEST;
+  </script>
+</body>
+</html>
