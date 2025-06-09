@@ -308,4 +308,14 @@ input#quantity {
     top: 60px;
     right: 0px;
   }
+
+  .mini-topic {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mini-topic label {
+    margin: 0px;
+  }
 }

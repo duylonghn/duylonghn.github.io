@@ -107,10 +107,11 @@ function preloadWordData(words) {
 
 function showCard(row) {
   const word = row[2];
-  const mean = row[3];
+  const ipa = row[3] || "";
+  const mean = row[4];
   document.getElementById("word").textContent = word;
+  document.getElementById("ipa").textContent = ipa;
   document.getElementById("mean").textContent = mean;
-  document.getElementById("ipa").textContent = wordDataMap[word]?.ipa || "";
 }
 
 function speak(event) {
@@ -129,15 +130,12 @@ function speak(event) {
 function startSession() {
   selectedWords = pickWords(allRows);
   if (selectedWords.length === 0) return;
-  
+
   showLoading();
-  preloadWordData(selectedWords).then(() => {
-    currentIndex = 0;
-    document.querySelector(".card-container").classList.remove("hidden");
-    showCard(selectedWords[currentIndex]);
-  }).finally(() => {
-    hideLoading();
-  });
+  currentIndex = 0;
+  document.querySelector(".card-container").classList.remove("hidden");
+  showCard(selectedWords[currentIndex]);
+  hideLoading();
 }
 
 function stopSession() {

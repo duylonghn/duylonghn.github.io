@@ -112,7 +112,7 @@ strong {
 .mini-topic label {
    margin-right: 10px;
    cursor: pointer;
-	margin-left: 10px;
+	 margin-left: 10px;
 }
 
 input#quantity {
@@ -176,47 +176,54 @@ input#quantity {
   font-weight: bold;
 }
 
-.ipa {
-  font-size: 18px;
-  color: #555;
-  margin-top: 8px;
+.answer-line {
+  font-size: 28px;
+  letter-spacing: 12px;
+  margin-top: 16px;
+  text-align: center;
+  user-select: none;
 }
 
-.speaker-btn {
-  position: relative;
-  bottom: 0px;
-  left: 0px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #666;
-  font-size: 1.5rem;
+#answer-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: auto;
+  z-index: -1;
+  top: 50px;
 }
 
-.speaker-btn:hover {
-  color: #000;
+#answer {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #acacac;
 }
 
-.answer {
-  display: flex;
-  gap: 10px;
-  width: 100%;
+.letter {
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 36px;
+  text-transform: lowercase;
+  font-size: 28px;
+  margin: 0 2px;
+  box-sizing: border-box;
+  user-select: none;
 }
 
-.answer input {
-  padding: 8px;
-  font-size: 16px;
-  flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  max-width: 200px;
+
+.card.correct .answer-line {
+  color: green;
 }
 
-.action {
+.card.incorrect .answer-line {
+  color: red;
+}
+
+.actions {
   display: flex;
-  gap: 10px;
   justify-content: center;
+  gap: 10px;
 }
 
 .btn {
@@ -290,18 +297,40 @@ input#quantity {
     margin-top: 30px;
   }
 
-  #search-container {
-    margin-top: 30px;
-    width: 90%;
-  }
-
-  #vocabulary {
-    max-height: none;
-  }
-
   .link {
     position: absolute;
     top: 60px;
     right: 0px;
+  }
+
+  .mini-topic {
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mini-topic label {
+    margin: 0px;
+  }
+
+  .card {
+    width: 40%;
+    height: auto;
+  }
+
+  .word {
+    font-size: 20px;
+  }
+
+  .letter {
+    font-size: 20px;
+  }
+
+  #answer {
+    margin-top: 5px;
+  }
+
+  #answer-input {
+    top: 50px;
   }
 }

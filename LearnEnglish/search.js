@@ -39,7 +39,7 @@ function renderVocabulary(rows) {
   rows.forEach(row => {
     const tr = document.createElement("tr");
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       const td = document.createElement("td");
       td.textContent = row[i] || "";
       tr.appendChild(td);

@@ -54,15 +54,14 @@
 			<div class="card-container hidden">
       			<div class="card">
 					<div class="card-content">
-        				<div class="word" id="word">english</div>
-						<div class="ipa" id="ipa"></div>
-						<button class="speaker-btn" onclick="speak(event)" aria-label="Nghe">
-          					<i class="fas fa-volume-up"></i>
-        				</button>
-      				</div>
-					<div class="answer">
-						<input type="text" id="answer-input" placeholder="Vietnamese">
+						<div class="word" id="word"></div>
+						<div id="display-answer" class="answer-line"></div>
+						<input type="text" id="answer-input" maxlength="100" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+						<div id="answer"></div>
+					</div>
+					<div class="actions">
 						<button class="btn" id="check-answer">Check</button>
+						<button class="btn" id="show-answer">Hiện từ</button>
 					</div>
 				</div>
 				<div class="action">

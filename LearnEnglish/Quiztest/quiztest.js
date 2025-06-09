@@ -1,8 +1,8 @@
 const SHEET_ID = "1K-aaePqbch_VEEzu_3Mk4DO1xjr-TkGcZSejJmeUZRU";
 let allRows = [];
 let selectedWords = [];
-let wordDataMap = {};
 let currentIndex = 0;
+window.userAnswerArr = [];
 
 function loadLoader() {
   return fetch(PATHS.LOADER)
@@ -82,61 +82,40 @@ function pickWords(rows) {
   return filtered.slice(0, quantity);
 }
 
-function fetchWordData(word) {
-  return fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-    .then(res => res.json())
-    .then(data => {
-      const phonetic = data[0]?.phonetics?.find(p => p.audio || p.text);
-      return {
-        ipa: phonetic?.text || '',
-        audio: phonetic?.audio || ''
-      };
-    })
-    .catch(() => ({ ipa: '', audio: '' }));
-}
-
-function preloadWordData(words) {
-  const fetches = words.map(row => {
-    const word = row[2];
-    return fetchWordData(word).then(data => {
-      wordDataMap[word] = data;
-    });
-  });
-  return Promise.all(fetches);
-}
-
 function showCard(row) {
-  const word = row[2];
-  document.getElementById("word").textContent = word;
-  document.getElementById("ipa").textContent = wordDataMap[word]?.ipa || "";
-  document.getElementById("answer-input").value = "";
+  const english = (row[2] || "").toLowerCase();
+  const vietnamese = row[4] || "";
+
+  document.getElementById("word").textContent = vietnamese;
+
+  const displayAnswer = document.getElementById("display-answer");
+  displayAnswer.innerHTML = "";
+
+  for (let i = 0; i < english.length; i++) {
+    const span = document.createElement("span");
+    span.classList.add("letter");
+    span.textContent = "_";
+    displayAnswer.appendChild(span);
+  }
+
+  window.userAnswerArr = new Array(english.length).fill("_");
 
   const cardEl = document.querySelector(".card");
   cardEl.classList.remove("correct", "incorrect");
-}
 
-function speak(event) {
-  event.stopPropagation();
-  const word = document.getElementById("word").textContent;
-  const audioUrl = wordDataMap[word]?.audio;
-  if (audioUrl) {
-    const audio = new Audio(audioUrl);
-    audio.play();
-  } else {
-    const utterance = new SpeechSynthesisUtterance(word);
-    speechSynthesis.speak(utterance);
-  }
+  document.getElementById("answer").textContent = "";
+
+  focusHiddenInput();
 }
 
 function checkAnswer() {
-  const answerInput = document.getElementById("answer-input");
   const cardEl = document.querySelector(".card");
-  const userAnswer = answerInput.value.trim().toLowerCase();
-  const correctAnswer = (selectedWords[currentIndex][3] || "").toLowerCase();
+  const userAnswer = window.userAnswerArr.join("");
+  const correctAnswer = (selectedWords[currentIndex][2] || "").toLowerCase();
 
-  if (!userAnswer) return;
+  if (!userAnswer || userAnswer.includes("_")) return;
 
-  if (correctAnswer.includes(userAnswer)) {
+  if (correctAnswer === userAnswer) {
     cardEl.classList.add("correct");
     cardEl.classList.remove("incorrect");
   } else {
@@ -150,26 +129,101 @@ function startSession() {
   if (selectedWords.length === 0) return;
 
   showLoading();
-  preloadWordData(selectedWords).then(() => {
-    currentIndex = 0;
-    document.querySelector(".card-container").classList.remove("hidden");
-    showCard(selectedWords[currentIndex]);
-  }).finally(() => {
-    hideLoading();
-  });
+  currentIndex = 0;
+  document.querySelector(".card-container").classList.remove("hidden");
+  showCard(selectedWords[currentIndex]);
+  hideLoading();
 }
 
 function stopSession() {
   selectedWords = [];
-  wordDataMap = {};
+  window.userAnswerArr = [];
   document.querySelector(".card-container").classList.add("hidden");
+}
+
+function showAnswer() {
+  const correctAnswer = (selectedWords[currentIndex][2] || "").toLowerCase();
+  const answerEl = document.getElementById("answer");
+  answerEl.textContent = correctAnswer;
+
+  const cardEl = document.querySelector(".card");
+  cardEl.classList.remove("correct", "incorrect");
+
+  focusHiddenInput();
+}
+
+function handleTyping(e) {
+  if (document.querySelector(".card-container").classList.contains("hidden")) return;
+  if (e.repeat) return;
+
+  const displayAnswer = document.getElementById("display-answer");
+  const letters = displayAnswer.querySelectorAll(".letter");
+  const cardEl = document.querySelector(".card");
+
+  if (e.key.length === 1 && /^[a-z]$/i.test(e.key)) {
+    const pos = window.userAnswerArr.findIndex(ch => ch === "_");
+    if (pos !== -1) {
+      window.userAnswerArr[pos] = e.key.toLowerCase();
+      letters[pos].textContent = e.key.toLowerCase();
+    }
+    e.preventDefault();
+  } else if (e.key === "Backspace") {
+    for (let i = window.userAnswerArr.length - 1; i >= 0; i--) {
+      if (window.userAnswerArr[i] !== "_") {
+        window.userAnswerArr[i] = "_";
+        letters[i].textContent = "_";
+        break;
+      }
+    }
+    e.preventDefault();
+  } else if (e.key === "Enter") {
+    checkAnswer();
+    e.preventDefault();
+  } else if (e.key === "ArrowRight") {
+    if (currentIndex < selectedWords.length - 1) {
+      currentIndex++;
+      showCard(selectedWords[currentIndex]);
+    }
+    e.preventDefault();
+  } else if (e.key === "ArrowLeft") {
+    if (currentIndex > 0) {
+      currentIndex--;
+      showCard(selectedWords[currentIndex]);
+    }
+    e.preventDefault();
+  }
+
+  cardEl.classList.remove("correct", "incorrect");
+}
+
+function handleMobileInput(e) {
+  const value = e.target.value.toLowerCase().trim();
+  if (!value) return;
+
+  const displayAnswer = document.getElementById("display-answer");
+  const letters = displayAnswer.querySelectorAll(".letter");
+
+  const pos = window.userAnswerArr.findIndex(ch => ch === "_");
+  if (pos !== -1 && /^[a-z]$/.test(value)) {
+    window.userAnswerArr[pos] = value;
+    letters[pos].textContent = value;
+  }
+
+  e.target.value = "";
+}
+
+function focusHiddenInput() {
+  const input = document.getElementById("answer-input");
+  if (input) input.focus();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   loadLoader().then(() => {
     fetchSheet("Vocabulary", renderTopicsAndTypes);
 
-    document.getElementById("start").addEventListener("click", startSession);
+    document.getElementById("start").addEventListener("click", () => {
+      startSession();
+    });
     document.getElementById("stop").addEventListener("click", stopSession);
 
     document.getElementById("next").addEventListener("click", () => {
@@ -187,36 +241,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("check-answer").addEventListener("click", () => {
-      const userAnswer = document.getElementById("answer-input").value.trim().toLowerCase();
-      const correctAnswer = selectedWords[currentIndex][3].trim().toLowerCase();
-      const card = document.querySelector(".card");
-      card.classList.remove("correct", "incorrect");
-      card.classList.add(userAnswer === correctAnswer ? "correct" : "incorrect");
+      checkAnswer();
     });
 
-    document.getElementById("answer-input").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        document.getElementById("check-answer").click();
-      }
+    document.getElementById("show-answer").addEventListener("click", () => {
+      showAnswer();
     });
 
-    document.addEventListener("keydown", (e) => {
-      if (document.querySelector(".card-container").classList.contains("hidden")) return;
+    document.addEventListener("keydown", handleTyping);
 
-      switch (e.key) {
-        case "ArrowLeft":
-          if (currentIndex > 0) {
-            currentIndex--;
-            showCard(selectedWords[currentIndex]);
-          }
-          break;
-        case "ArrowRight":
-          if (currentIndex < selectedWords.length - 1) {
-            currentIndex++;
-            showCard(selectedWords[currentIndex]);
-          }
-          break;
-      }
-    });
+    const input = document.getElementById("answer-input");
+    if (input) {
+      input.addEventListener("input", handleMobileInput);
+    }
   });
 });
