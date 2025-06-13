@@ -1,2 +1,2 @@
 # duylongh.github.io
-V2.4.0
+V2.4.1

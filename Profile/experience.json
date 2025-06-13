@@ -4,19 +4,19 @@
         "role": "Student",
         "company": "University of Transport and Communications",
         "time": "2021 - 2026",
-        "description": "Completed the academic program\nMajor in Electronics and Telecommunications Engineering\nEngineer in Information and Communications Technology."
+        "description": "Currently completing a 5-year engineering program\nMajor in Electronics and Telecommunications Engineering\nEngineer in Information and Communication Technology."
       },
       {
         "role": "Intern",
-        "company": "Vietnam Posts and Telecommunications Group - VNPT",
+        "company": "VNPT Information Technology Company - VNPT IT",
         "time": "05/2024 - 08/2024",
-        "description": "- Improved knowledge about networking including: network protocols and types of cyber attacks.\n- Studied basic CCNA knowledge, built labs using Cisco Packet Tracer and EVE for basic network systems.\n- Learned about tools used in system deployment: Docker, K8S, MinIO, Jenkins, Ansible, Kafka.\n- Installed monitoring tools: Grafana, Prometheus, cAdvisor, Node-exporter.\n- Studied and practiced simulations of common web attack methods."
+        "description": "- Enhanced knowledge of networks including: network protocols and types of cyber attacks.\n- Studied basic CCNA concepts, built labs on Cisco Packet Tracer and EVE for basic network systems.\n- Researched supporting tools for system deployment: Docker, K8S, MinIO, Jenkins, Ansible, Kafka.\n- Installed monitoring tools: Grafana, Prometheus, cAdvisor, Node-exporter.\n- Studied and practiced simulations of web attack methods."
       },
       {
-        "role": "Customer Service",
+        "role": "Customer Service Representative",
         "company": "Tien Phong Commercial Joint Stock Bank and Monkey Vietnam",
         "time": "07/2022 - 04/2024",
-        "description": "- Handled customer service hotline.\n- Supported and answered customer inquiries regarding banking services.\n- Trained in banking - specific customer service operations.\n- Participated in training new customer service staff.\n- Participated in company projects on customer experience and training new customer service staff."
+        "description": "- Operated the customer service hotline.\n- Supported and answered customer inquiries about services.\n- Trained in customer service skills for the banking sector.\n- Participated in training new employees.\n- Took part in company projects on customer experience."
       }
     ],
     "vi": [
@@ -24,11 +24,11 @@
         "role": "Sinh viên",
         "company": "Trường Đại học Giao thông Vận tải",
         "time": "2021 - 2026",
-        "description": "Hoàn thành chương trình học\nNgành Kỹ thuật điện tử viễn thông\nKỹ sư Kỹ thuật Thông Tin và Truyền Thông."
+        "description": "Đang hoàn thành chương trình học hệ Kỹ sư 5 năm\nNgành Kỹ thuật điện tử viễn thông\nKỹ sư Kỹ thuật Thông Tin và Truyền Thông."
       },
       {
         "role": "Thực tập sinh",
-        "company": "Tập đoàn Bưu chính Viễn thông Việt Nam - VNPT",
+        "company": "Công ty công nghệ thông tin VNPT - VNPT IT",
         "time": "05/2024 - 08/2024",
         "description": "- Nâng cao kiến thức về mạng bao gồm: Giao thức mạng, các kiểu tấn công mạng.\n- Học kiến thức cơ bản về CCNA, xây dựng lab trên Cisco Packet Tracer, EVE các hệ thống mạng cơ bản.\n- Tìm hiểu các công cụ hỗ trợ trong triển khai hệ thống: Docker, K8S, MinIO, Jenkin, Ansible, Kafka.\n- Cài đặt công cụ monitoring: Grafana, Prometheus, cAdvisor, Node-exporter.\n- Tìm hiểu, thực hành mô phỏng về các phương pháp tấn công web."
     },
