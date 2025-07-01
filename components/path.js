@@ -7,6 +7,8 @@ const PATHS = {
   
   INDEX_CCNA: '/CCNA/index.html',
   TEMPLATE_CCNA: '/CCNA/template.html',
+  SIDEBAR: '/CCNA/sidebar.html',
+  VLMS: '/CCNA/vlsm.html',
 
   INDEX_LINUX: '/Linux/index.html',
   INDEX_ERLANGB: '/ErlangB/ErlangB.html',

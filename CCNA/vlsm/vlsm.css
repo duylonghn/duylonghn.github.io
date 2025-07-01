@@ -1,0 +1,55 @@
+.main-content label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+}
+
+.main-content input[type="text"] {
+  width: 70%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.main-content button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #34495e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.main-content button:hover {
+  background-color: #2567a9;
+}
+
+/* Kết quả subnet */
+#ip-result > div {
+  background-color: #f9f9f9;
+  border-left: 4px solid #34495e;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Kết quả chuyển đổi nhị phân */
+#bin-result, #ip-result-dec {
+    display: none;
+    margin-bottom: 8px;
+    font-family: monospace;
+    background-color: #dddddd;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: #222;
+    width: fit-content;
+    font-size: 15px;
+}

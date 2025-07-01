@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Network Support</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="vlsm/vlsm.css">
+        <script src="/components/path.js"></script>
+        <script src="script.js"></script>
+        <script src="vlsm/vlsm.js"></script>
+    </head>
+    <body>
+        <div id="loader"></div>
+        <div class="container">
+            <div id="sidebar"></div>
+            <main class="main-content">
+                <h1>Quy hoạch IP</h1>
+                <section>
+                    <label>IP gốc:</label>
+                    <input type="text" id="base-ip" placeholder="VD: 192.168.1.0/24">
+                    <label>Số lượng host mỗi mạng LAN (ngăn cách bởi dấu phẩy):</label>
+                    <input type="text" id="host-list" placeholder="VD: 100,50,25"><br>
+                    <button onclick="generateSubnets()">Tính toán mạng con</button>
+                    <div id="ip-result"></div>
+                </section>
+                <section>
+                    <h3>Chuyển đổi IP ↔ Nhị phân</h3>
+
+                    <label>IP thập phân → Nhị phân:</label>
+                    <input type="text" id="ip-to-bin" placeholder="VD: 192.168.1.1"><br>
+                    <button onclick="convertToBinary()">Chuyển</button>
+                    <div id="bin-result"></div>
+
+                    <label>IP nhị phân → Thập phân:</label>
+                    <input type="text" id="bin-to-ip" placeholder="VD: 11000000.10101000.00000001.00000001"><br>
+                    <button onclick="convertToDecimal()">Chuyển</button>
+                    <div id="ip-result-dec"></div>
+                </section>
+            </main>
+            <a class="link" id="index" style="height: 20px; margin: 10px; text-align: center;">Trang chủ</a>
+        </div>
+        <div id="sign" style="color: rgb(146, 146, 146);"></div>
+        <script>
+            fetch(PATHS.SIGN)
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sign').innerHTML = html;
+            });
+            fetch(PATHS.SIDEBAR)
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('sidebar').innerHTML = html;
+                document.getElementById('temp').href = PATHS.TEMPLATE_CCNA;
+                document.getElementById('index-ccna').href = PATHS.INDEX_CCNA;
+                document.getElementById('vlms').href = PATHS.VLMS;
+            });
+            document.getElementById('index').href = PATHS.INDEX;
+        </script>
+    </body>
+</html>

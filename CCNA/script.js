@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function setupSidebarSelection() {
   const commandLi = document.querySelector("#command-category li");
   const templateLi = document.querySelector("#template-category li");
+  const vlmsLi = document.querySelector("#vlms-category li");
 
   if (commandLi && window.location.pathname.includes("index")) {
     commandLi.classList.add("selected");
@@ -148,6 +149,10 @@ function setupSidebarSelection() {
 
   if (templateLi && window.location.pathname.includes("template")) {
     templateLi.classList.add("selected");
+  }
+
+  if (vlmsLi && window.location.pathname.includes("VLMS")) {
+    vlmsLi.classList.add("selected");
   }
 }
 

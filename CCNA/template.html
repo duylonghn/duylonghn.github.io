@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CCNA Commands</title>
+  <title>Network Support</title>
   <link rel="stylesheet" href="styles.css">
   <script src="/components/path.js"></script>
   <script src="script.js"></script>
@@ -11,15 +11,7 @@
 <body>
   <div id="loader"></div>
   <div class="container">
-    <aside class="sidebar">
-      <h2>Tính năng</h2>
-      <ul id="command-category" class="category">
-        <li class="link-temp"><a id="index-ccna">Mã lệnh</a></li>
-      </ul>
-      <ul id="template-category" class="category">
-        <li>Mẫu</li>
-      </ul>
-    </aside>
+    <div id="sidebar"></div>
     <main class="main-content">
       <h1>Mẫu lệnh CCNA</h1>
       <div id="search-container">
@@ -47,7 +39,14 @@
       .then(html => {
         document.getElementById('sign').innerHTML = html;
     });
-    document.getElementById('index-ccna').href = PATHS.INDEX_CCNA;
+    fetch(PATHS.SIDEBAR)
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('sidebar').innerHTML = html;
+        document.getElementById('temp').href = PATHS.TEMPLATE_CCNA;
+        document.getElementById('index-ccna').href = PATHS.INDEX_CCNA;
+        document.getElementById('vlms').href = PATHS.VLMS;
+    });
     document.getElementById('index').href = PATHS.INDEX;
   </script>
 </body>
