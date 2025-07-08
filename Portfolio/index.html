@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | By Duy Long</title>
+    <!-- custom css-->
+    <link rel="stylesheet" href="style.css">
+    <!--box icon-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="/components/path.js"></script>
+</head>
+<body class="dark-mode">
+
+    <!--header design-->
+    <header class="header">
+        <a href="#" class="logo">Portfolio.</a>
+
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skill">Skill</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#tools">Tools</a>
+            <a href="#contact">Contact</a>
+            
+        </nav>
+
+        <div class="bx bx-moon" id="darkMode-icon"></div>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+    </header>
+    
+
+    <!--home section-->
+    <section class="home" id="home">
+
+        <div class="home-content">
+            <h3>Hello, I am</h3>
+            <h1>Duy Long</h1>
+            <p>I am currently completing a 5-year Engineering program majoring in Information and Communications Engineering at the University of Transport. I have done an internship in Network Administration at the Network and Information Security Department of VNPT Information Technology Company.</p>
+
+            <div class="social-media">
+                <a href="https://www.facebook.com/duylong.2283/" title="facebook"><i class='bx bxl-facebook'></i></a>
+                <a href="https://zalo.me/0332058965" title="zalo"><i class='bx bx-phone'></i></a>
+                <a href="mailto:duylong2283.work@gmail.com" title="email"><i class='bx bx-envelope-open'></i></a>
+                <a href="https://github.com/duylonghn" title="github"><i class='bx bx-code-alt'></i></a>
+            </div>
+
+            <a href="resume/Đào Duy Long.pdf" class="btn" download>Download CV</a>
+        </div>
+
+        <div class="profession-container">
+            <div class="profession-box">
+
+                <div class="profession" style="--i:0; margin-left: 48px;">
+                    <i class='bx bx-network-chart'></i>
+                    <h3>Network</h3>
+                </div>
+
+                <div class="profession" style="--i:1; margin-top: 85px;">
+                    <i class='bx bx-server'></i>
+                    <h3>System</h3>
+                </div>
+
+                <div class="profession" style="--i:2; margin-left: -30px;">
+                    <i class='bx bx-terminal'></i>
+                    <h3>Kali Linux</h3>
+                </div>
+
+                <div class="profession" style="--i:3; margin-top: 12px;">
+                    <i class='bx bx-chip'></i>
+                    <h3 style="padding-left: 10px">IOT Developer</h3>
+                </div>
+
+                <div class="circle"></div>
+            </div>
+
+            <div class="overlay"></div>
+        </div>
+
+        <div class="home-img">
+            <img src="images/network.png"> 
+        </div>
+
+    </section>
+
+    <!--about section-->
+    <section class="about" id="about">
+
+        <div class="about-img">
+            <img src="images/avt.jpg" alt="">
+        </div>
+
+        <div class="about-content">
+            <h2 class="heading">About <span>Duy Long</span></h2>
+            <h3>Hi, I'm Here To Help Your Next Project!</h3>
+            <p>Currently, I am learning new knowledge in the field of Network and System Administration. Besides, I have experience in developing IOT projects using Arduino with hardware such as ESP32, ESP8266. I have a little knowledge with HTML, CSS, JS to create websites for IOT projects.</p>
+        </div>
+
+    </section>
+
+    <!--experience section-->
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <h2 class="heading">Duy Long <span>Experience</span></h2>
+
+            <div class="experience-wrapper">
+                <div class="experience-box">
+                    <div class="experience-content">
+                        <div class="experience-slide">
+                            <img src="images/vnpt.png" alt="VNPT-IT">
+                            <h3>Intern Network</h3>
+                            <h4>05/2024 - 08/2024</h4>
+                            <p>- Enhanced knowledge of networks including: network protocols and types of cyber attacks.<br>- Studied basic CCNA concepts, built labs on Cisco Packet Tracer and EVE for basic network systems.<br>- Researched supporting tools for system deployment: Docker, K8S, MinIO, Jenkins, Ansible, Kafka.<br>- Installed monitoring tools: Grafana, Prometheus, cAdvisor, Node-exporter.<br>- Studied and practiced simulations of web attack methods.</p>
+                        </div>
+                        <div class="experience-slide">
+                            <div class="img2" style="gap: 10px">
+                                <img src="images/tpbank.png" alt="TPBank">
+                                <img src="images/monkey.png" alt="Monkey Vietnam">
+                            </div>
+                            <h3>Customer Service</h3>
+                            <h4>05/2022 - 04/2024</h4>
+                            <p>Operated the customer service hotline.<br>- Supported and answered customer inquiries about services.<br>- Trained in customer service skills for the banking sector.<br>- Participated in training new employees.<br>- Took part in company projects on customer experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--service section-->
+    <section class="skill" id="skill">
+        <h2  class="heading">Duy Long <span>Skill</span></h2>
+
+        <div class="skill-container">
+            <div class="skill-box">
+                <img src="images/cisco.png" alt="CCNA" style="width: 90px;">
+                <h3>CCNA</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/linux.png" alt="Linux" style="width: 60px; border-radius:10px">
+                <h3>Linux</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/kali.png" alt="Kali Linux" style="width: 70px; border-radius:10px">
+                <h3>Kali Linux</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/arduino.png" alt="Arduino" style="width: 90px;">
+                <h3>Arduino</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/altium.png" alt="Altium Designer" style="width: 70px;">
+                <h3>Altium Designer</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/wireshark.png" alt="Wireshark" style="width: 70px;">
+                <h3>Wireshark</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/python.png" alt="Python" style="width: 70px;">
+                <h3>Pyhton</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/html.png" alt="HTML" style="width: 70px;">
+                <h3>HTML</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/css.png" alt="CSS" style="width: 70px;">
+                <h3>CSS</h3>
+            </div>
+            <div class="skill-box">
+                <img src="images/js.png" alt="Java Script" style="width: 100px;">
+                <h3>JavaScript</h3>
+            </div>
+        </div>
+        
+    </section>
+
+    <!--portfolio section-->
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Duy Long <span>Project</span></h2>
+        <div class="portfolio-container">
+            <div class="portfolio-box">
+                <img src="images/ESP32WebSite.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>ESP32 WebServer</h4>
+                    <p>Webserver Library for ESP32</p>
+                    <a href="https://github.com/duylonghn/ESP32Website"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+            <div class="portfolio-box">
+                <img src="images/qlhs.png" alt="">
+
+                <div class="portfolio-layer">
+                    <h4>Student Management</h4>
+                    <p>Student scientific research topics 2025</p>
+                    <a href="https://github.com/duylonghn/quanlyhocsinh"><i class='bx bx-link-external'></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="achievement" id="achievement">
+        <h2 class="heading">Duy Long <span>Achievement</span></h2>
+        <div class="achievement-container">
+            <div class="achievement-box">
+                <div class="achievement-info">
+                    <h4>3rd prize Student-level scientific research</h4>
+                    <p>2025</p>
+                </div>
+            </div>
+            <div class="achievement-box">
+                <div class="achievement-info">
+                    <h4>2nd prize Student level scientific research</h4>
+                    <p>2023</p>
+                </div>
+            </div>
+            <div class="achievement-box">
+                <div class="achievement-info">
+                    <h4>Five Good Attributes of Students</h4>
+                    <p>2022</p>
+                </div>
+            </div> 
+        </div>
+    </section>
+    <section class="tools" id="tools">
+        <h2 class="heading">Duy Long <span>Tools</span></h2>
+        <div class="tools-container">
+            <a id="linux" class="tools-box">
+                <div class="tools-info">
+                    <h4>Linux Command</h4>
+                </div>
+            </a>
+            <a id="network" class="tools-box">
+                <div class="tools-info">
+                    <h4>Support Network</h4>
+                </div>
+            </a>
+            <a id="esp32" class="tools-box">
+                <div class="tools-info">
+                    <h4>ESP32 Tools</h4>
+                </div>
+            </a>
+            <a id="learn-eng" class="tools-box">
+                <div class="tools-info">
+                    <h4>Learning English</h4>
+                </div>
+            </a>
+            <a id="erlangb" class="tools-box">
+                <div class="tools-info">
+                    <h4>Erlang B</h4>
+                </div>
+            </a>
+        </div>
+    </section>
+
+        <!--testimonial section-->
+        <!--<div class="testimonial-container">
+            <h2 class="heading">Valuable <span>Testimonial</span></h2>
+
+            <div class="testimonial-wrapper">
+                <div class="testimonial-box mySwiper">
+                    <div class="testimonial-content swiper-wrapper">
+                        <div class="testimonial-slide swiper-slide">
+                            <img src="images/t1.png" alt="">
+                            <h3>Astrid Hofferson</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ullam maiores. Mollitia earum illum ipsam.</p>
+                        </div>
+
+                        <div class="testimonial-slide swiper-slide">
+                            <img src="images/t2.png" alt="">
+                            <h3>Hiccup Haddock</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ullam maiores. Mollitia earum illum ipsam.</p>
+                        </div>
+
+                        <div class="testimonial-slide swiper-slide">
+                            <img src="images/t3.png" alt="">
+                            <h3>Heather Oswald</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem, ullam maiores. Mollitia earum illum ipsam.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+
+                </div>
+            </div>
+        </div>-->
+
+        <!--contact section-->
+        <section class="contact" id="contact" style="min-height: 80vh;">
+            <h2 class="heading">Contact <span>Me!</span></h2>
+
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>📧 Email:</strong> <a href="mailto:duylong2283.work@gmail.com">duylong2283.work@gmail.com</a></p>
+                <p><strong>📱 Phone:</strong> <a href="https://zalo.me/0332058965">+84 33 205 8965</a></p>
+                <p><strong>📍 Address:</strong> Cau Giay, Ha Noi</p>
+            </div>
+        </section>
+
+        <!--footer section-->
+        <footer class="footer">
+            <div class="footer-text">
+                <p>Copyright &copy; 2025 by Duy Long | All right reserved!</p>
+            </div>
+
+            <div class="footer-iconTop">
+                <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+            </div>
+        </footer>
+
+
+
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- custom js-->
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('erlangb').href = PATHS.INDEX_ERLANGB;
+        document.getElementById('esp32').href = PATHS.ESP32;
+        document.getElementById('network').href = PATHS.INDEX_CCNA;
+        document.getElementById('linux').href = PATHS.INDEX_LINUX;
+        document.getElementById('learn-eng').href = PATHS.LEARN_ENG;
+
+    </script>
+</body>
+</html>

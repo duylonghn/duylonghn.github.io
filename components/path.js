@@ -1,5 +1,5 @@
 const PATHS = {
-  INDEX: '/Profile/DaoDuyLong.html',
+  INDEX: '/Portfolio/index.html',
   
   SIGN: '/components/mysign.html',
   LOADER: '/components/loading.html',
@@ -18,6 +18,5 @@ const PATHS = {
   VOCABULARY: '/LearnEnglish/Vocabulary/AddWord.html',
   QUIZTEST: '/LearnEnglish/Quiztest/Quiztest.html',
   
-  AVT: '/Profile/avartar.png',
-  PROFILE: 'https://duylonghn.github.io/Profile/DaoDuyLong.html'
+  PROFILE: 'https://duylonghn.github.io/Portfolio/index.html'
 };
