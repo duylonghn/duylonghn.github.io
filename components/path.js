@@ -12,7 +12,7 @@ const PATHS = {
 
   INDEX_LINUX: '/Linux/index.html',
   INDEX_ERLANGB: '/ErlangB/ErlangB.html',
-  ESP32: '/ESP32/port.html',
+  ESP32: '/ESP32/esp32.html',
   LEARN_ENG: '/LearnEnglish/index.html',
   FLASHCARD: '/LearnEnglish/Flashcard/Flashcard.html',
   VOCABULARY: '/LearnEnglish/Vocabulary/AddWord.html',

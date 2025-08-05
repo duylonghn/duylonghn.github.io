@@ -12,6 +12,7 @@ body {
   width: 100%;
   text-align: center;
   justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -82,4 +83,45 @@ a {
   margin: 10px;
   color: #2555AA;
   text-decoration: none;
+}
+
+.serialContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#serialMonitor {
+  border-radius: 10px;
+  margin: 30px auto; 
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f7f7f7;
+  width: 800px;
+  max-width: 800px;
+  height: 550px;
+}
+
+#serialOutput {
+  border-radius: 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  height: 350px;
+  max-height: 350px;
+  overflow: scroll;
+  background: #000000;
+  color: #0f0;
+  padding: 10px;
+  font-family: monospace;
+  text-align: left;
+}
+
+#serialInput {
+  width: 50%;
+  height: 30px;
+  border-radius: 10px;
+}
+
+#sendSerialBtn {
+  height: 36px;
+  width: 50px;
 }

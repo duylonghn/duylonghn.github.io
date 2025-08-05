@@ -80,3 +80,103 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+let port;
+let reader;
+let writer; // <-- thêm biến writer
+let keepReading = false;
+
+const connectButton = document.getElementById('connectSerialBtn');
+const disconnectButton = document.getElementById('disconnectSerialBtn');
+const serialOutput = document.getElementById('serialOutput');
+const serialInput = document.getElementById('serialInput');
+const sendButton = document.getElementById('sendSerialBtn');
+
+connectButton.addEventListener('click', async () => {
+  try {
+    port = await navigator.serial.requestPort();
+    await port.open({ baudRate: 115200 });
+
+    // Tạo encoder và writer một lần sau khi kết nối
+    const textEncoder = new TextEncoderStream();
+    textEncoder.readable.pipeTo(port.writable);
+    writer = textEncoder.writable.getWriter();
+
+    connectButton.disabled = true;
+    disconnectButton.disabled = false;
+    sendButton.disabled = false;
+
+    keepReading = true;
+    readSerialLoop();
+  } catch (err) {
+    console.error('Lỗi khi mở cổng serial:', err);
+  }
+});
+
+disconnectButton.addEventListener('click', async () => {
+  keepReading = false;
+  disconnectButton.disabled = true;
+  connectButton.disabled = false;
+  sendButton.disabled = true;
+
+  if (reader) {
+    try {
+      await reader.cancel();
+    } catch (e) {}
+  }
+
+  if (writer) {
+    try {
+      writer.releaseLock();
+    } catch (e) {}
+  }
+
+  if (port) {
+    try {
+      await port.close();
+    } catch (e) {}
+  }
+
+  serialOutput.textContent += "\n🔌 Ngắt kết nối.\n";
+});
+
+async function readSerialLoop() {
+  while (port.readable && keepReading) {
+    const textDecoder = new TextDecoderStream();
+    port.readable.pipeTo(textDecoder.writable);
+    reader = textDecoder.readable.getReader();
+
+    try {
+      while (keepReading) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        if (value) {
+          serialOutput.textContent += value;
+          serialOutput.scrollTop = serialOutput.scrollHeight;
+        }
+      }
+    } catch (error) {
+      console.error('Lỗi khi đọc dữ liệu serial:', error);
+    } finally {
+      reader.releaseLock();
+    }
+  }
+}
+
+sendButton.addEventListener('click', async () => {
+  const command = serialInput.value;
+  if (command && writer) {
+    try {
+      await writer.write(command + '\n');
+      serialInput.value = '';
+    } catch (error) {
+      console.error('Lỗi khi gửi command:', error);
+    }
+  }
+});
+
+// Gửi bằng phím Enter
+serialInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    sendButton.click();
+  }
+});
