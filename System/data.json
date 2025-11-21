@@ -1,0 +1,235 @@
+{
+  "clonezilla": {
+    "name": "Clonezilla",
+    "steps": [
+      {
+        "step": "1. Cắm Disk Source và USB boot vào thiết bị",
+        "desc": "- Vào menu boot của thiết bị chọn tên của USB boot \n- Chọn Clonezilla"
+      },
+      {
+        "step": "2. Chọn Clonezilla live (VGA 800x600)",
+        "desc": "",
+        "img":"images/clonezilla/step2.png"
+      },
+      {
+        "step": "3. Chọn language",
+        "desc": "- Chọn en_US.UTF-8 English",
+        "img":"images/clonezilla/step3.png"
+      },
+      {
+        "step": "4. Chọn keyboard",
+        "desc": "- Chọn Keep Keep the default keyboard",
+        "img":"images/clonezilla/step4.png"
+      },
+      {
+        "step": "5. Chọn Start_Clonezilla",
+        "img":"images/clonezilla/step5.png"
+      },
+      {
+        "step": "6. Chọn device-device",
+        "desc": "- Để clone ổ cứng từ thiết bị sang thiết bị",
+        "img":"images/clonezilla/step6.png"
+      },
+      {
+        "step": "7. Chọn Beginner mode",
+        "img":"images/clonezilla/step7.png"
+      },
+      {
+        "step": "8. Chọn disk to local disk",
+        "desc": "- Để clone từ ổ cứng vào ổ cứng nằm trên thiết bị",
+        "img":"images/clonezilla/step8.png"
+      },
+      {
+        "step": "9. Chọn source disk (ổ cứng được clone)",
+        "desc": "- Chọn đúng source disk là nơi sẽ lấy dữ liệu để clone",
+        "img":"images/clonezilla/step9.png"
+      },
+      {
+        "step": "10. Chọn target disk (ổ cứng cần clone)",
+        "desc": "- Chọn đúng target disk là nơi sẽ clone lại dữ liệu",
+        "img":"images/clonezilla/step10.png"
+      },
+      {
+        "step": "11. Nhấn enter để tiếp tục",
+        "desc": "",
+        "img":"images/clonezilla/step11.png"
+      },
+      {
+        "step": "12. Nhấn enter để tiếp tục",
+        "desc": "",
+        "img":"images/clonezilla/step12.png"
+      },
+      {
+        "step": "13. Chọn y 2 lần",
+        "desc": "",
+        "img":"images/clonezilla/step13.png"
+      },
+      {
+        "step": "14. Chọn Poweroff để khởi động lại hệ thống",
+        "desc": "",
+        "img":"images/clonezilla/step14.png"
+      }
+    ]
+  },
+  "extend_disk": {
+    "name": "Extend Disk",
+    "steps": [
+      {
+        "step": "1. Kiểm tra phân vùng ổ cứng",
+        "desc": "- Kiểm tra tên phân vùng cần mở rộng và dung lượng hiện có",
+        "code": "lsblk",
+        "img": "images/extend_disk/step1.png"
+      },
+      {
+        "step": "2. Sử dụng parted để thao tác với ổ cứng",
+        "desc": "- Từ bước 1 xác định tên ổ cứng để dùng parted thao tác",
+        "code": "parted /dev/name_disk",
+        "img": "images/extend_disk/step2.png"
+      },
+      {
+        "step": "3. In ra màn hình danh sách phân vùng của ổ cứng",
+        "desc": "- Kiểm tra tên và dung lượng chính xác của phân vùng muốn mở rộng",
+        "code": "print",
+        "img": "images/extend_disk/step3.png"
+      },
+      {
+        "step": "4. Resize phân vùng cần tăng dung lượng",
+        "desc": "- Nếu được cảnh báo phân vùng đang được sử dụng hay chọn Yes",
+        "code": "resizepart 3 100%",
+        "img": "images/extend_disk/step4.png"
+      },
+      {
+        "step": "5. Kiểm tra lại dung lượng phân vùng",
+        "desc": "- Gõ quit để thoát khỏi parted \n- Sau đó dùng lệnh lsblk để kiểm tra dung lượng phân vùng đã tăng hay chưa",
+        "code": "lsblk",
+        "img": "images/extend_disk/step5.png"
+      },
+      {
+        "step": "6. Cập nhật dung lượng cho LVM - Physical Volume",
+        "desc": "- Cho LVM biết rằng PV đã có thêm không gian, cập nhật lại Physical Extents sẵn sàng phân phối vào VG",
+        "code": "pvresize /dev/name_partition",
+        "img": "images/extend_disk/step6.png"
+      },
+      {
+        "step": "7. Mở rộng Logical Volume - LV",
+        "desc": "- Lấy không gian trống trong VG để gán vào LV nới chứa filesystem /",
+        "code": "lvextend -l +100%FREE /dev/ubuntu-vg/lv-root",
+        "img": "images/extend_disk/step7.png"
+      },
+      {
+        "step": "8. Mở rộng filesystem",
+        "desc": "- Mở rộng filesystem / ra toàn bộ dung lượng trống đã gán",
+        "code": "resize2fs /dev/ubuntu-vg/lv-root",
+        "img": "images/extend_disk/step8.png"
+      },
+      {
+        "step": "9. Kiểm tra lại size của lv-root",
+        "code": "df -h",
+        "img": "images/extend_disk/step9.png"
+      }
+    ]
+  },
+  "intall_esxi": {
+    "name": "Install ESXI 6.7",
+    "steps": [
+      {
+        "step": "1. Tải ISO và cài đặt lên thiết bị",
+        "desc": "- Truy cập link dưới để cài file ISO đưa vào USB Boot.\n- Vào màn hình Wellcome nhấn Enter để cài đặt",
+        "code": "https://dl.dell.com/FOLDER04945360M/1/VMware-VMvisor-Installer-6.7.0-8169922.x86_64-DellEMC_Customized-A01.iso",
+        "img": "images/esxi/step1.png"
+      },
+      {
+        "step": "2. Đồng ý với điều khoản của ESXI",
+        "desc": "- Nhấn F11 để đồng ý với điều khoản của Vmware",
+        "img": "images/esxi/step2.png"
+      },
+      {
+        "step": "3. Chọn ổ cứng cài đặt",
+        "desc": "- Sau khi chọn ổ cứng nhấn Enter để thực hiện quá trình cài đặt.\n- Lưu ý chương trình sẽ xuất hiện thông báo yêu cầu xác nhận xoá dữ liệu trên ổ cứng đó.\n- Chọn Đồng ý và Nhấn Enter để tiếp tục.",
+        "img": "images/esxi/step3.png"
+      },
+      {
+        "step": "4. Chọn bố cục bàn phím",
+        "desc": "- US Default",
+        "img": "images/esxi/step4.png"
+      },
+      {
+        "step": "5. Tạo mật khẩu cho root",
+        "desc": "- Password phải đảm bảo đầy đủ ký tự thường, ký tự in hoa, ký tự đặc biệt",
+        "img": "images/esxi/step5.png"
+      },
+      {
+        "step": "6. Xác nhận cài đặt",
+        "desc": "- Sau khi thực hiện các thiết lập cần thiết, bấm nút F11 để xác nhận ổ đĩa sẽ được phân vùng và bắt đầu cài đặt.\n- Nếu gặp thông báo vi xử lý máy tính có thể không được hỗ trợ trong các phiên bản VMware ESXi tương lai ở bước này, bấm nút Enter để bỏ qua và tiếp tục.",
+        "img": "images/esxi/step6.png"
+      },
+      {
+        "step": "7. Ngắt kết nối USB boot khỏi máy",
+        "desc": "- Sau khi cài đặt hoàn thành, bấm nút Enter ở lựa chọn Remove the installation media before rebooting để ngắt kết nối USB trước khi khởi động lại máy",
+        "img": "images/esxi/step7.png"
+      },
+      {
+        "step": "8. Vào web quản trị của ESXi",
+        "desc": "- Truy cập vào IP của ESXi trên trình duyệt web trong cùng mạng để vào Web quản trị của ESXi",
+        "img": "images/esxi/step8.png"
+      },
+      {
+        "step": "9. Xử lý khi IP báo fail",
+        "desc": "- Bấm F2 để vào cài đặt hệ thống, đăng nhập bằng User: root – Pass: thiết lập ở bước trước.\n- Chọn Configure Management Network để cấu hình địa chỉ IP.",
+        "img": "images/esxi/step9.png"
+      },
+      {
+        "step": "10. Chọn mục IPv4 Configuration",
+        "img": "images/esxi/step10.png"
+      },
+      {
+        "step": "11. Cấu hình IPv4",
+        "desc": "- Chọn “Set static IPv4 address and networl configuration”để cấu hình IP tĩnh.\n- Điền các thông tin địa chỉ IP, SubnetMask, Default Gateway vào các ô dưới.\n- Sau đó nhận <Enter> OK",
+        "img": "images/esxi/step11.png"
+      },
+      {
+        "step": "12. Xác nhận thay đổi cấu hình",
+        "desc": "- Nhấn ESC thoát ra và nhấn “Y” để xác nhận thay đổi cấu hình network quản lý ESXi",
+        "img": "images/esxi/step12.png"
+      }
+    ]
+  },
+  "install_kvm": {
+    "name": "Instal KVM",
+    "steps": [
+      {
+        "step": "1. Kiểm tra kiến trúc hệ điều hành",
+        "desc": "- Kết quả >0: CPU có hỗ trợ ảo hóa.\n- Nếu ra 0 → phải bật Intel VT-x hoặc AMD-V trong BIOS.",
+        "code": "egrep -c '(vmx|svm)' /proc/cpuinfo"
+      },
+      {
+        "step": "2. Cài đặt KVM",
+        "desc": "- Chạy lệnh để update và cài đặt các gói phần mềm\n- qemu-kvm: công cụ KVM chính.\n- libvirt-daemon-system, libvirt-clients: dịch vụ quản lý ảo hóa.\n- bridge-utils: hỗ trợ bridge mạng.\n- virt-manager: giao diện đồ họa để quản lý VM (Virtual Machine Manager).",
+        "code": "sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virt-manager"
+      },
+      {
+        "step": "3. Kiểm tra trạng thái dịch vụ libvirtd",
+        "desc": "- Trạng thái active (running) là được",
+        "code": "systemctl status libvirtd"
+      },
+      {
+        "step": "4. Thêm User vào nhóm của libvirtd và kvm",
+        "code": "sudo usermod -aG libvirt,kvm $USER"
+      },
+      {
+        "step": "5. Cài ISO hệ điều hành máy ảo",
+        "desc": "- Tải file ISO của hệ điều hành cho máy ảo vào folder sau để tiện quản lý và khởi tạo máy ảo.",
+        "code": "/var/lib/libvirt/images/"
+      },
+      {
+        "step": "6. Tạo bridges mạng",
+        "desc": "- Sửa file .yml để tạo bridges và gán với card mạng",
+        "code": "sudo nano /etc/netplan/name_file.yml"
+      },
+      {
+        "step": "7. Cấu hình file .yml trên host",
+        "code": "network:\n  version: 2\n  ethernet:\n    name_card:\n      dhcp4: no\n  bridges:\n    br0:\n      interfaces: [name_card]\n      dhcp4: no\n      addresses: [IP/subnet]\n      routes:\n        - to: default\n          via: IP_GW\n      nameservers:\n          addresses: [8.8.8.8]"
+      }
+    ]
+  }
+}

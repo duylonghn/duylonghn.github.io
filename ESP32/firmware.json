@@ -10,6 +10,12 @@
     "name": "Điểm danh RFID V1.0.0",
     "note": "Thiết bị điểm danh bằng RFID, có hiển thị màn OLED và LCD. Gửi dữ liệu lên database cho hệ thống.",
     "manifest": "/ESP32/firmwares/Wroom32/Student_Management/V1.0.0.json"
+  },
+  {
+    "board":"ESP32",
+    "name": "Persional Dercor Screen V1.0.0",
+    "note": "Sử dụng ESP32 cùng màn LCD TFT 2,8 inch dercor bàn làm việc",
+    "manifest": "/ESP32/firmwares/Wroom32/Persional_Dercor_Screen/V1.1.0.json"
   }
 ]
   

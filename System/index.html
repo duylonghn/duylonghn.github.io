@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Support</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="/components/path.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="loader"></div>
+  <div class="container">
+    <aside class="sidebar">
+      <h2 class="sidebar-title">Công cụ</h2>
+      <ul id="tool-list" class="tool-list"></ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Các bước thực hiện</h1>
+      <div id="steps-container" class="steps-container hidden">
+      </div>
+    </main>
+
+    <a class="link" id="index" style="height: 30px; margin: 10px; text-align: center;">Trang chủ</a>
+  </div>
+  <div id="sign" style="color: rgb(146, 146, 146);"></div>
+
+  <script>
+    fetch(PATHS.SIGN)
+      .then(res => res.text())
+      .then(html => document.getElementById('sign').innerHTML = html);
+    document.getElementById('index').href = PATHS.INDEX;
+  </script>
+</body>
+</html>
