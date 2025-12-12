@@ -1,3 +1,3 @@
 # duylongh.github.io
-V3.2.0
+V3.2.1
 ## My Portfolio

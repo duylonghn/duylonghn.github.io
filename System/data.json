@@ -231,5 +231,6 @@
         "code": "network:\n  version: 2\n  ethernet:\n    name_card:\n      dhcp4: no\n  bridges:\n    br0:\n      interfaces: [name_card]\n      dhcp4: no\n      addresses: [IP/subnet]\n      routes:\n        - to: default\n          via: IP_GW\n      nameservers:\n          addresses: [8.8.8.8]"
       }
     ]
-  }
+  },
+  "install_pfsense": {}
 }
