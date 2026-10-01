@@ -1,6 +1,6 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
-  title: Duy Long IT Docs
+  title: Duy Long's IT Documentation
   structure:
     - type: space
       key: it-docs
