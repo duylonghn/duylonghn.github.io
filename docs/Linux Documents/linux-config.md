@@ -369,7 +369,7 @@ rsync -avh --progress /svr/nfs/ /nfsn/
 * `-h`: Hiển thị dung lượng dễ đọc.
 * `--progress`: Hiển thị tiến trình từng file.
 
-## 6. Disk&#x20;
+## 6. Disk
 
 ### 6.1. Scan lại disk
 
@@ -564,11 +564,11 @@ lvrename {VG} {LV_cũ} {LV_mới}
 
 Reboot lại server, nhấn giữ Shift để vào màn hình sau, rồi nhấn `e` để edit.
 
-<figure><img src=".gitbook/assets/6_8_boot_option.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/6_8_boot_option_ubuntu.png" alt=""><figcaption></figcaption></figure>
 
 Chỉnh sửa lại đường dẫn mục `root=` thành tên LVM mới.
 
-<figure><img src=".gitbook/assets/6_8_rename_root_path.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/6_8_rename_root_path.png" alt=""><figcaption></figcaption></figure>
 
 Sau đó `Ctrl+X` để lưu và boot lại hệ thống.
 
@@ -760,19 +760,19 @@ sudo update-grub
 
 Reboot và nhấn giữ Shift khi bắt đầu khởi động. Đến màn hình chọn kernel thì nhấn phím **"e"** để mở các tham số GRUB cần chỉnh sửa.
 
-<figure><img src=".gitbook/assets/7_2_boot_option.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/7_2_boot_option.jpg" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 Sử dụng các phím mũi tên và cuộn xuống dòng cuối cùng bắt đầu bằng từ khóa `Linux/boot/vmlinuz`.
 
-<figure><img src=".gitbook/assets/7_2_find_option_boot.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/7_2_find_option_boot.jpg" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
 Thay thế `ro quiet splash $vt_handoff` bằng `rw init=/bin/bash`.
 
-<figure><img src=".gitbook/assets/7_2_change_boot_path.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/7_2_change_boot_path.jpg" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -800,7 +800,7 @@ Thay đổi mật khẩu của root như bình thường.
 
 Reboot và nhấn giữ Shift khi bắt đầu khởi động. Đến màn hình chọn kernel thì nhấn phím **"e"** để mở các tham số GRUB cần chỉnh sửa.
 
-<figure><img src=".gitbook/assets/7_3_boot_option_oracle.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/7_3_boot_option_oracle.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -808,7 +808,7 @@ Reboot và nhấn giữ Shift khi bắt đầu khởi động. Đến màn hình
 
 Tìm dòng bắt đầu bằng `kernel=` và thêm tham số `rd.break` cuối dòng, sau đó nhấn `Ctrl + X` để lưu.
 
-<figure><img src=".gitbook/assets/7_3_change_boot_option_oracle.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/7_3_change_boot_option_oracle.png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
